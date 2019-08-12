@@ -12,11 +12,50 @@
 
 package com.foundation.salesforce.core;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
 /**
  * ReaderDriverProperties class
  *
  * @author Cristian Lujan
- * @version 0.0.1
+ * @version 1.0
  */
 public class ReaderDriverProperties {
+
+    private static final String URL_SALESFORCE_PROPERTIES = "gradle.properties";
+    private Map<String, String> properties = new HashMap<>();
+
+    protected ReaderDriverProperties() {
+        addPropertiesSalesforce();
+    }
+
+    public Map<String, String> getProperties() {
+        return properties;
+    }
+
+    public void addPropertiesSalesforce() {
+        Properties propertiesSalesforce = loadFile(URL_SALESFORCE_PROPERTIES);
+        propertiesSalesforce.forEach((key, value) -> properties.put(key.toString(), value.toString()));
+    }
+
+    public static ReaderDriverProperties getInstance() {
+        return new ReaderDriverProperties();
+    }
+
+    private Properties loadFile(String url) {
+        Properties prop = new Properties();
+        try {
+            InputStream input = new FileInputStream(url);
+            // load a properties file
+            prop.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return prop;
+    }
 }
