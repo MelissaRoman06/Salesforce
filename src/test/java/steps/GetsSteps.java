@@ -9,33 +9,20 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-
-package steps;/*
- * @(#) steps.GetsSteps.java Copyright (c) 2019 Jala Foundation.
- * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
- * All rights reserved.
- *
- * This software is the confidential and proprietary information of
- * Jala Foundation, ("Confidential Information").  You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Jala Foundation.
- */
+package steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.proxy;
 
 /**
- * steps.GetsSteps class
+ * GetsSteps class contains steps for Gets.feature
  *
  * @author MelissaRoman
  * @version 1.0
@@ -54,15 +41,11 @@ public class GetsSteps {
                 .setBaseUri("https://na112.salesforce.com/services/data/")
                 .addHeader("Authorization",TOKEN_TYPE.concat(" ").concat(ACCESS_TOKEN))
                 .build();
-//        request = given().param("Id", idLead).
-//                and().headers("Authorization",TOKEN_TYPE.concat(" ").concat(ACCESS_TOKEN));
     }
 
     @When("a user retrieves the lead by Id")
     public void aUserRetrievesTheLeadById() {
-        Response response = given().spec(request).get(ENDPOINT_GET_LEAD_BY_ID);
-        RestAssured.proxy("172.31.90.162", 8080);
-        response = request.when().get(ENDPOINT_GET_LEAD_BY_ID);
+        response = given().spec(request).get("https://na112.salesforce.com/services/data/v39.0/sobjects/Lead/?Id=00Q3i000002AwJKEA0");
         System.out.println("response: " + response.prettyPrint());
     }
 
