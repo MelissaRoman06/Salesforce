@@ -12,9 +12,10 @@
 
 package steps;
 
-import com.foundation.salesforce.core.Account_API;
+import com.foundation.salesforce.core.AccountApi;
+import com.foundation.salesforce.core.RestClient.RestClientApi;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 /**
  * AccountStep class
@@ -24,15 +25,17 @@ import cucumber.api.java.en.When;
  */
 public class AccountStep {
 
-    private Account_API account_api = new Account_API();
+    private RestClientApi restClientApi;
+    private AccountApi accountApi;
 
-        @Given("I set up a GET request")
-        public void iSetUpAGETRequest() {
-            account_api.authenticateAccounts();
-        }
+    @Given("^I log in with Authorization token$")
+    public void ILogInWithAuthorizationToken() {
+        restClientApi.getInstance().requestAuthenticate();
+    }
 
-        @When("I send the request to (.*) endpoint")
-        public void iSendTheRequestToAccountEndpoint(String endPoint) {
-            account_api.requestAccounts(endPoint);
-        }
+    @Given("^I set up a GET request to Account endpoint$")
+    public void iSetUpAGETRequestToAccountEndpoint() {
+        accountApi.getInstance().getAccount();
+    }
+
 }

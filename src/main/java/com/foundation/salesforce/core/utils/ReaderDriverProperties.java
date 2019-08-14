@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.foundation.salesforce.core;
+package com.foundation.salesforce.core.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * ReaderDriverProperties class
+ * ReaderDriverProperties class.
  *
  * @author Cristian Lujan
  * @version 1.0
@@ -28,19 +28,24 @@ import java.util.Properties;
 public class ReaderDriverProperties {
 
     private static final String URL_SALESFORCE_PROPERTIES = "gradle.properties";
-    private Map<String, String> properties = new HashMap<>();
+
+    /**
+     * Map to save the properties of the application.
+     */
+    private Map<String, String> properties;
 
     protected ReaderDriverProperties() {
-        addPropertiesSalesforce();
+        properties = new HashMap<>();
+        addPropertiesSalesForce();
     }
 
     public Map<String, String> getProperties() {
         return properties;
     }
 
-    public void addPropertiesSalesforce() {
-        Properties propertiesSalesforce = loadFile(URL_SALESFORCE_PROPERTIES);
-        propertiesSalesforce.forEach((key, value) -> properties.put(key.toString(), value.toString()));
+    public void addPropertiesSalesForce() {
+        Properties propertiesSalesForce = loadFile(URL_SALESFORCE_PROPERTIES);
+        propertiesSalesForce.forEach((key, value) -> properties.put(key.toString(), value.toString()));
     }
 
     public static ReaderDriverProperties getInstance() {
@@ -58,4 +63,5 @@ public class ReaderDriverProperties {
         }
         return prop;
     }
+
 }
