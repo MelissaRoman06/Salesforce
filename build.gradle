@@ -25,4 +25,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
     testCompile 'io.rest-assured:rest-assured:4.0.0'
+    // https://mvnrepository.com/artifact/org.ow2.chameleon.json/json-service-json.org
+    compile group: 'org.ow2.chameleon.json', name: 'json-service-json.org', version: '0.4.0'
+
 }
