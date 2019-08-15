@@ -40,6 +40,11 @@ public class AccountStep {
 
     @When("^I send the request$")
     public void iSendTheRequest() {
+        restClientApi.getInstance().requestAuthenticate();
+    }
+
+    @Given("^I fill the request$")
+    public void iFillTheRequest() {
 
     }
 }

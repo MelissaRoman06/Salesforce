@@ -18,3 +18,6 @@ Feature: Acceptance Accounts tests
 #      """
 #    When I send the request
 #    Then I get a "200" status code as response
+Scenario: Create an Account
+  Given I fill the request
+  When I send the request
