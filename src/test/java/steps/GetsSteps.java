@@ -34,7 +34,7 @@ public class GetsSteps {
     private RequestSpecification request;
     private String ENDPOINT_GET_LEAD_BY_ID = "https://na112.salesforce.com/services/data/v39.0/sobjects/Lead";
     private String TOKEN_TYPE = "Bearer";
-    private String ACCESS_TOKEN = "00D3i000000rfF0!ARUAQNFhjMwRMqR4orFsAvSIuBch3KbXE8wbNEZO_JHkRKRb6LfSdDsvRSum.GMRnHSy_A6YgyNdeE8FBbAKdUsRRmPk2e6v";
+    private String ACCESS_TOKEN = "00D3i000000rfF0!ARUAQD6GRMf8qbz9Ckv_GoiD1LArXxZ3TriU9g4xuEokaIcQ2cBaebfOyopphZX3oVY5frxhTH3sAJc0nOmy0n_QT_dAb3nN";
 //00D3i000000rqLx!AQwAQJG7NFGTQnBWzPsPG7uh54eyY4OH335GBNcha2EqPOwvmWGlcY18QDrThsw0YBMjh7ceMO5WdF9g0y_xG.qGiWCYJuUw
     @Given("A lead exists with Id (.*)")
     public void aLeadExistsWithId(String idLead) {
