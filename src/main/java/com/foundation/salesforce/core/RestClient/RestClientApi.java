@@ -104,7 +104,6 @@ public class RestClientApi {
         request = new RequestSpecBuilder()
                 .setBaseUri(urlBase)
                 .setContentType(ContentType.JSON)
-                .setAccept(ContentType.JSON)
                 .setAuth(oauth2(accessToken))
                 .build();
     }
@@ -140,7 +139,7 @@ public class RestClientApi {
      * @return a response
      */
     public Response post(final String endpoint, final Map<String, String> valuesForTheBody) {
-        response = given().spec(request).body(valuesForTheBody).post(endpoint);
+        response = given().spec(request.body(valuesForTheBody.toString())).post(endpoint);
         return response;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * @(#) EndPoints.java Copyright (c) 2019 Jala Foundation.
+ * @(#) Context.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,29 +10,35 @@
  * with Jala Foundation.
  */
 
-package com.foundation.salesforce.core.utils;
+package com.foundation.salesforce.entities;
 
 /**
- * EndPoints class
+ * Context class
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class EndPoints {
+public class Context {
 
     /**
-     * Constructor protected.
+     * contact of type opportunity.
      */
-    private EndPoints(){
+    private Opportunity opportunity;
 
+    /**
+     * Context for creation of the constructor.
+     */
+    public Context() {
+        this.opportunity = new Opportunity();
     }
-    /**
-     * Endpoint of account.
-     */
-    public final static String ACCOUNT_ENDPOINT = "/v46.0/sobjects/Account";
 
     /**
-     * Endpoint of Opportunity.
+     * Returns the Opportunity of context.
+     *
+     * @return opportunity.
      */
-    public final static String OPPORTUNITY_ENDPOINT = "/v46.0/sobjects/Opportunity";
+    public Opportunity getOpportunity() {
+        return opportunity;
+    }
+
 }
