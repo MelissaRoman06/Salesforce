@@ -24,5 +24,7 @@ dependencies {
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.0.0'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20180813'
     testCompile 'io.rest-assured:rest-assured:4.0.0'
 }
