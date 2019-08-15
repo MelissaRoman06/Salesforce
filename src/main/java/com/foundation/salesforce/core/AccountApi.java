@@ -13,15 +13,11 @@
 package com.foundation.salesforce.core;
 
 import com.foundation.salesforce.core.RestClient.RestClientApi;
-import com.foundation.salesforce.entities.Account;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.foundation.salesforce.core.utils.EndPoints.ACCOUNT_ENDPOINT;
-import static io.restassured.RestAssured.given;
 
 /**
  * AccountApi class
@@ -74,9 +70,10 @@ public class AccountApi {
      * @param newAccount to sent the body of the request.
      * @return the id of account created.
      */
-//    public String createAccount(final Map<String, String> newAccount) {
-//        finalEndpoint = ACCOUNT_ENDPOINT;
-//        final Response response = restClient.post(finalEndpoint, newAccount);
-//        return response.body().jsonPath().getString("id");
-//    }
+    public String createAccount(final Map<String, String> newAccount) {
+        finalEndpoint = ACCOUNT_ENDPOINT;
+        response = restClient.post(finalEndpoint, newAccount);
+        response.prettyPrint();
+        return response.body().jsonPath().getString("id");
+    }
 }

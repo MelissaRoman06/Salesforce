@@ -15,9 +15,12 @@ package com.foundation.salesforce.core.RestClient;
 import com.foundation.salesforce.core.utils.ReaderDriverProperties;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.oauth2;
@@ -113,7 +116,9 @@ public class RestClientApi {
     public void requestAuthenticate() {
         request = new RequestSpecBuilder()
                 .setBaseUri(urlBase)
-                .addHeader("Authorization",TOKEN_TYPE.concat(accessToken))
+                .setContentType(ContentType.JSON)
+                .setAccept(ContentType.JSON)
+                .setAuth(oauth2(accessToken))
                 .build();
     }
 
@@ -124,8 +129,7 @@ public class RestClientApi {
      * @return a response.
      */
     public Response get(final String endpoint) {
-        urlApi = urlBase.concat(endpoint);
-        response = RestAssured.given().spec(request).get(urlApi);
+        response = given().spec(request).get(endpoint);
         return response;
     }
 
@@ -141,4 +145,15 @@ public class RestClientApi {
         return response;
     }
 
+    /**
+     * Returns a response after requesting a post.
+     *
+     * @param endpoint to do the request.
+     * @param valuesForTheBody the
+     * @return a response
+     */
+    public Response post(final String endpoint, final Map<String, String> valuesForTheBody) {
+        response = given().spec(request).body(valuesForTheBody).post(endpoint);
+        return response;
+    }
 }
