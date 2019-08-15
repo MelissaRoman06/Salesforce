@@ -14,6 +14,7 @@ package com.foundation.salesforce.core;
 
 import com.foundation.salesforce.core.RestClient.RestClientApi;
 import io.restassured.response.Response;
+import org.json.JSONException;
 
 import java.util.Map;
 
@@ -70,10 +71,10 @@ public class AccountApi {
      * @param newAccount to sent the body of the request.
      * @return the id of account created.
      */
-    public String createAccount(final Map<String, String> newAccount) {
+    public void createAccount(final Map<String, String> newAccount) throws JSONException {
         finalEndpoint = ACCOUNT_ENDPOINT;
         response = restClient.post(finalEndpoint, newAccount);
         response.prettyPrint();
-        return response.body().jsonPath().getString("id");
+      //  return response.body().jsonPath().getString("id");
     }
 }

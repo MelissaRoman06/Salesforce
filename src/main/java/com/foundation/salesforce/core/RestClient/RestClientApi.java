@@ -18,6 +18,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -64,6 +66,11 @@ public class RestClientApi {
     private RequestSpecification request;
 
     /**
+     * Variable for the request.
+     */
+    private RequestSpecification requestPost;
+
+    /**
      * Variable for  initialize base api.
      */
     private static RestClientApi instance;
@@ -76,6 +83,7 @@ public class RestClientApi {
     protected RestClientApi() {
         initialize();
         requestAuthenticate();
+        requestAuthenticatePost();
     }
 
     /**
@@ -105,11 +113,17 @@ public class RestClientApi {
         request = new RequestSpecBuilder()
                 .setBaseUri(urlBase)
                 .setContentType(ContentType.JSON)
-                .setAccept(ContentType.JSON)
                 .setAuth(oauth2(accessToken))
                 .build();
     }
 
+    public void requestAuthenticatePost() {
+        requestPost = new RequestSpecBuilder()
+                .setBaseUri(urlBase)
+                .setAuth(oauth2(accessToken))
+                .addHeader("Content-Type","application/json")
+                .build();
+    }
     /**
      * Returns a response after requesting a delete.
      *
@@ -140,8 +154,11 @@ public class RestClientApi {
      * @param valuesForTheBody the
      * @return a response
      */
-    public Response post(final String endpoint, final Map<String, String> valuesForTheBody) {
-        response = given().spec(request.body(valuesForTheBody.toString())).post(endpoint);
+    public Response post(final String endpoint, final Map<String, String> valuesForTheBody) throws JSONException {
+        String authenticator = "Bearer 00D3i000000rfF0!ARUAQD6GRMf8qbz9Ckv_GoiD1LArXxZ3TriU9g4xuEokaIcQ2cBaebfOyopphZX3oVY5frxhTH3sAJc0nOmy0n_QT_dAb3nN";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Name","account444");
+        response = given().spec(requestPost.body(jsonObject.toString())).post(endpoint);
         return response;
     }
 }
