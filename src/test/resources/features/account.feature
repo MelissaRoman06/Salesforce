@@ -1,10 +1,11 @@
 
 Feature: Acceptance Accounts tests
+  Background:
+    Given I log in with Authorization token
 
   Scenario: Get Accounts
-    Given I log in with Authorization token
-    And I set up a GET request to Account endpoint
-#    When I send the request
+    Given I set up a GET request to Account endpoint
+    When I send the request
 #    Then I get a 200 status code as response
 #
 #  Scenario: Create an Account

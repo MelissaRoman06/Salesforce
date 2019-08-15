@@ -14,14 +14,14 @@ package steps;
 
 import com.foundation.salesforce.core.AccountApi;
 import com.foundation.salesforce.core.RestClient.RestClientApi;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 /**
  * AccountStep class
  *
  * @author Cristian Lujan
- * @version 0.0.1
+ * @version 1.0
  */
 public class AccountStep {
 
@@ -38,4 +38,8 @@ public class AccountStep {
         accountApi.getInstance().getAccount();
     }
 
+    @When("^I send the request$")
+    public void iSendTheRequest() {
+
+    }
 }

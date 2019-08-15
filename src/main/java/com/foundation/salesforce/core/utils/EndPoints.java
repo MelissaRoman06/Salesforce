@@ -16,7 +16,7 @@ package com.foundation.salesforce.core.utils;
  * EndPoints class
  *
  * @author Cristian Lujan
- * @version 0.0.1
+ * @version 1.0
  */
 public class EndPoints {
 

@@ -16,24 +16,14 @@ package com.foundation.salesforce.entities;
  * Account class
  *
  * @author Cristian Lujan
- * @version 0.0.1
+ * @version 1.0
  */
 public class Account {
 
-    /**
-     * Variable for the name Account.
-     */
     private String nameAccount;
 
-    /**
-     * Variable for the id of Account.
-     */
     private int id;
 
-    /**
-     *
-     * @return
-     */
     public String getNameAccount() {
         return nameAccount;
     }
@@ -42,11 +32,6 @@ public class Account {
         this.nameAccount = nameAccount;
     }
 
-    /**
-     * Gets the id of the Account.
-     *
-     * @return the id as string.
-     */
     public int getId() {
         return id;
     }

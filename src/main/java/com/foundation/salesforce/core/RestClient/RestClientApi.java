@@ -13,7 +13,6 @@
 package com.foundation.salesforce.core.RestClient;
 
 import com.foundation.salesforce.core.utils.ReaderDriverProperties;
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -97,18 +96,6 @@ public class RestClientApi {
         urlBase = ReaderDriverProperties.getInstance().getProperties().get("urlBase");
         accessToken = ReaderDriverProperties.getInstance().getProperties().get("access_token");
     }
-
-//    /**
-//     * Request authenticate.
-//     */
-//    public void requestAuthenticate() {
-//        final RequestSpecification reqSpec = new RequestSpecBuilder()
-//                .setBaseUri(URL_BASE)
-//                .setContentType(ContentType.JSON)
-//                .setAccept(ContentType.JSON)
-//                .setAuth(oauth2(ACCESS_TOKEN))
-//                .build();
-//    }
 
     /**
      * Request authenticate.
