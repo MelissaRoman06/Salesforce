@@ -11,7 +11,6 @@
  */
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -19,7 +18,6 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
@@ -36,7 +34,7 @@ public class GetsSteps {
     private RequestSpecification request;
     private String ENDPOINT_GET_LEAD_BY_ID = "https://na112.salesforce.com/services/data/v39.0/sobjects/Lead";
     private String TOKEN_TYPE = "Bearer";
-    private String ACCESS_TOKEN = "00D3i000000rfF0!ARUAQOjI70WgjOmdv9Scodrzs2n2rMkx2TzrYyGavZUrONRjbKp0FPDjVqf8onzhY7WHDOtfpSXKTGfk1NbGdMPfbZ4iNcLi";
+    private String ACCESS_TOKEN = "00D3i000000rfF0!ARUAQNFhjMwRMqR4orFsAvSIuBch3KbXE8wbNEZO_JHkRKRb6LfSdDsvRSum.GMRnHSy_A6YgyNdeE8FBbAKdUsRRmPk2e6v";
 //00D3i000000rqLx!AQwAQJG7NFGTQnBWzPsPG7uh54eyY4OH335GBNcha2EqPOwvmWGlcY18QDrThsw0YBMjh7ceMO5WdF9g0y_xG.qGiWCYJuUw
     @Given("A lead exists with Id (.*)")
     public void aLeadExistsWithId(String idLead) {
