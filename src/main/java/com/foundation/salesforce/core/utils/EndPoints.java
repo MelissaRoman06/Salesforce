@@ -29,6 +29,6 @@ public class EndPoints {
     /**
      * Endpoint of account.
      */
-    public final static String ACCOUNT_ENDPOINT = "/v46.0/sobjects/Account";
+    public final static String ACCOUNT_ENDPOINT = "services/data/v39.0/sobjects/Account";
 
 }

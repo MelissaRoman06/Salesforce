@@ -20,4 +20,4 @@ Feature: Acceptance Accounts tests
 #    Then I get a "200" status code as response
 Scenario: Create an Account
   Given I fill the request
-  When I send the request
+  When I send the requestt

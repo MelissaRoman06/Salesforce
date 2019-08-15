@@ -23,6 +23,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.oauth2;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
  * RestClientApi class
@@ -140,7 +141,7 @@ public class RestClientApi {
      * @return a response
      */
     public Response post(final String endpoint, final Map<String, String> valuesForTheBody) {
-        response = given().spec(request).body(valuesForTheBody).post(endpoint);
+        response = given().spec(request.body(valuesForTheBody.toString())).post(endpoint);
         return response;
     }
 }

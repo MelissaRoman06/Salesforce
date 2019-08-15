@@ -17,6 +17,9 @@ import com.foundation.salesforce.core.RestClient.RestClientApi;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * AccountStep class
  *
@@ -40,11 +43,19 @@ public class AccountStep {
 
     @When("^I send the request$")
     public void iSendTheRequest() {
-        restClientApi.getInstance().requestAuthenticate();
+
     }
 
     @Given("^I fill the request$")
     public void iFillTheRequest() {
+        restClientApi.getInstance().requestAuthenticate();
 
+    }
+
+    @When("^I send the requestt$")
+    public void iSendTheRequestt() {
+        final Map<String,String> map = new HashMap<>();
+        map.put("Name","asdf");
+        accountApi.getInstance().createAccount(map);
     }
 }
