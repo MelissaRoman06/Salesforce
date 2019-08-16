@@ -56,8 +56,19 @@ public class AccountStep {
 
     @When("^I send the requestt$")
     public void iSendTheRequestt() throws JSONException {
-        JSONObject map = new JSONObject();
-        map.put("Name","Accnnt");
-        accountApi.getInstance().createAccount(map);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Name","Accnnt");
+        accountApi.getInstance().createAccount(jsonObject);
+    }
+
+    @Given("^I fill the delete request$")
+    public void iFillTheDeleteRequest() {
+        restClientApi.getInstance().requestAuthenticate();
+    }
+
+    @When("^I send the delete$")
+    public void iSendTheDelete() {
+        accountApi.getInstance()
+                .deleteAccount("https://na112.salesforce.com/services/data/v39.0/sobjects/Account");
     }
 }

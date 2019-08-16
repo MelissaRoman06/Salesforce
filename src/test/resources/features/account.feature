@@ -21,3 +21,7 @@ Feature: Acceptance Accounts tests
 Scenario: Create an Account
   Given I fill the request
   When I send the requestt
+
+  Scenario: Delete an Account
+    Given I fill the delete request
+    When I send the delete
