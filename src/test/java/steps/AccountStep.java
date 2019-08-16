@@ -14,6 +14,9 @@ package steps;
 
 import com.foundation.salesforce.core.AccountApi;
 import com.foundation.salesforce.core.RestClient.RestClientApi;
+import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.json.JSONException;
@@ -32,6 +35,7 @@ public class AccountStep {
 
     private RestClientApi restClientApi;
     private AccountApi accountApi;
+    private  String idAccount;
 
     @Given("^I log in with Authorization token$")
     public void ILogInWithAuthorizationToken() {
@@ -48,27 +52,40 @@ public class AccountStep {
 
     }
 
+    @Before
     @Given("^I fill the request$")
     public void iFillTheRequest() {
         restClientApi.getInstance().requestAuthenticate();
 
     }
 
-    @When("^I send the requestt$")
-    public void iSendTheRequestt() throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Name","Accnnt");
-        accountApi.getInstance().createAccount(jsonObject);
-    }
 
+//    @When("^I send the post$")
+//    public void iSendTheRequestt() throws JSONException {
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("Name", "john");
+//        idAccount = accountApi.getInstance().createAccount(jsonObject);
+//    }
+
+    @After
     @Given("^I fill the delete request$")
     public void iFillTheDeleteRequest() {
         restClientApi.getInstance().requestAuthenticate();
     }
 
-    @When("^I send the delete$")
+    @After
+    @When("^I delete the account$")
     public void iSendTheDelete() {
-        accountApi.getInstance()
-                .deleteAccount("https://na112.salesforce.com/services/data/v39.0/sobjects/Account");
+        String endpoint = "https://na112.salesforce.com/services/data/v39.0/sobjects/Account/"+idAccount;
+         accountApi.getInstance()
+                .deleteAccount(endpoint);
+    }
+
+    @When("^I send the post with the name \"([^\"]*)\"$")
+    public void iSendThePostWithTheName(String name) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Name", name);
+        idAccount = accountApi.getInstance().createAccount(jsonObject);
+        System.out.println(name);
     }
 }

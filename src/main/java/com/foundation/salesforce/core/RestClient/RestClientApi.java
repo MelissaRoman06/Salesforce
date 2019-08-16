@@ -124,6 +124,7 @@ public class RestClientApi {
                 .addHeader("Content-Type","application/json")
                 .build();
     }
+
     /**
      * Returns a response after requesting a delete.
      *
@@ -155,7 +156,7 @@ public class RestClientApi {
      * @return a response
      */
     public Response post(final String endpoint, JSONObject valuesForTheBody) throws JSONException {
-        response = given().spec(requestPost.body(valuesForTheBody.toString())).post(endpoint);
+        response = given().spec(request.body(valuesForTheBody.toString())).post(endpoint);
         return response;
     }
 }

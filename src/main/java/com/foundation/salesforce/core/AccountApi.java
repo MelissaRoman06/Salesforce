@@ -83,7 +83,6 @@ public class AccountApi {
         finalEndpoint = ACCOUNT_ENDPOINT;
         response = restClient.delete(endpoint);
         response.prettyPrint();
-        //return response.body().jsonPath().getString("id");
     }
 
 }
