@@ -51,7 +51,7 @@ public class OpportunityApi {
     }
 
     /**
-     * Returns the instance the account API.
+     * Returns the instance the opportunity API.
      *
      * @return a account API.
      */
@@ -60,8 +60,9 @@ public class OpportunityApi {
     }
 
     /**
+     * Return the response after requesting an opportunities.
      *
-     * @return
+     * @return the response.
      */
     public Response getOpportunity() {
         response = restClient.get(OPPORTUNITY_ENDPOINT);

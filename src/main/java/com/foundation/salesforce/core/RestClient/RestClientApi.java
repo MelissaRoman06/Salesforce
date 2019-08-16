@@ -18,6 +18,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -109,14 +110,13 @@ public class RestClientApi {
     }
 
     /**
-     * Returns a response after requesting a delete.
+     * Returns a response after requesting a get.
      *
      * @param endpoint to do the request.
      * @return a response.
      */
     public Response get(final String endpoint) {
-        response = given().spec(request).get(endpoint);
-        return response;
+        return apiResponse ("GET", endpoint);
     }
 
     /**
@@ -127,19 +127,66 @@ public class RestClientApi {
      * @return a response.
      */
     public Response delete(final String endpoint) {
-        response = given().spec(request).delete(endpoint);
-        return response;
+        return apiResponse ("DELETE", endpoint);
     }
 
     /**
      * Returns a response after requesting a post.
      *
      * @param endpoint to do the request.
-     * @param valuesForTheBody the
+     *
+     * @return a response.
+     */
+    public Response post(final String endpoint) {
+        return apiResponse ("POST", endpoint);
+    }
+
+    /**
+     * Returns a response after requesting a put.
+     *
+     * @param endpoint to do the request.
+     *
+     * @return a response.
+     */
+    public Response put(final String endpoint) {
+        return apiResponse ("PUT", endpoint);
+    }
+
+    /**
+     * Returns a response after requesting a patch.
+     *
+     * @param endpoint to do the request.
+     *
+     * @return a response.
+     */
+    public Response patch(final String endpoint) {
+        return apiResponse ("PATCH", endpoint);
+    }
+
+    /**
+     * Returns a response after requesting a post.
+     *
+     * @param httpMethod to do the request.
      * @return a response
      */
-    public Response post(final String endpoint, final Map<String, String> valuesForTheBody) {
-        response = given().spec(request.body(valuesForTheBody.toString())).post(endpoint);
-        return response;
+    public Response apiResponse(String httpMethod, final String endPoint) {
+        return given().spec(request).when().request(httpMethod, endPoint);
+    }
+
+    public RequestSpecification buildSpec(final String taskBody) {
+        return new RequestSpecBuilder().addRequestSpecification(request).
+                setContentType(ContentType.JSON).setBody(taskBody).build();
+    }
+
+    public RequestSpecification buildSpec(final Map taskBody) {
+        return new RequestSpecBuilder().addRequestSpecification(request).
+                setContentType(ContentType.JSON).
+                setBody(new JSONObject(taskBody).toString()).build();
+    }
+
+    public RequestSpecification buildSpec(final JSONObject taskBody) {
+        return new RequestSpecBuilder().addRequestSpecification(request).
+                setContentType(ContentType.JSON).
+                setBody(taskBody.toString()).build();
     }
 }

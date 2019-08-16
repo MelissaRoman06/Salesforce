@@ -12,6 +12,8 @@
 
 package com.foundation.salesforce;
 
+import com.foundation.salesforce.entities.Context;
+
 /**
  * Main class
  *
@@ -19,4 +21,11 @@ package com.foundation.salesforce;
  * @version 1.0
  **/
 public class Main {
+
+
+    public static void main(String[] args) {
+        System.out.println();
+    }
+
+
 }

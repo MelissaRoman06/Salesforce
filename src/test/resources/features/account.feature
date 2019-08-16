@@ -5,7 +5,7 @@ Feature: Acceptance Accounts tests
 
   Scenario: Get Accounts
     Given I set up a GET request to Account endpoint
-    When I send the request
+#    When I send the request
 #    Then I get a 200 status code as response
 #
 #  Scenario: Create an Account

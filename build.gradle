@@ -17,5 +17,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile 'io.cucumber:cucumber-java:2.4.0'
     testCompile 'io.cucumber:cucumber-junit:2.4.0'
+    compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '6.7.0'
+    compile group: 'org.json', name: 'json', version: '20180813'
 
 }

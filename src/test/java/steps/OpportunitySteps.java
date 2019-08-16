@@ -1,5 +1,5 @@
 /*
- * @(#) AccountStep.java Copyright (c) 2019 Jala Foundation.
+ * @(#) OpportunitySteps.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -12,39 +12,42 @@
 
 package steps;
 
-import com.foundation.salesforce.core.AccountApi;
+import com.foundation.salesforce.core.OpportunityApi;
 import com.foundation.salesforce.core.RestClient.RestClientApi;
 import com.foundation.salesforce.entities.Context;
 import com.foundation.salesforce.entities.Opportunity;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 /**
- * AccountStep class
+ * OpportunitySteps class
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountStep {
+public class OpportunitySteps {
 
     private RestClientApi restClientApi;
-    private AccountApi accountApi;
+    private OpportunityApi opportunityApi;
+
+    /**
+     * Variable for the context.
+     */
     private Context context;
+
     private Opportunity opportunity;
 
-    public AccountStep(final Context context) {
+    /**
+     * Constructor of contact steps sending the context.
+     *
+     * @param context init the context.
+     */
+    public OpportunitySteps(final Context context) {
         this.context = context;
         opportunity = context.getOpportunity();
     }
 
-    @Given("^I log in with Authorization token$")
-    public void ILogInWithAuthorizationToken() {
-        restClientApi.getInstance().requestAuthenticate();
-    }
+    @Given("^I set up a GET request to Opportunities endpoint$")
+    public void iSetUpAGETRequestToOpportunitiesEndpoint() {
 
-    @Given("^I set up a GET request to Account endpoint$")
-    public void iSetUpAGETRequestToAccountEndpoint() {
-        accountApi.getInstance().getAccount();
     }
-
 }
