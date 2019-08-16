@@ -53,19 +53,19 @@ public class AccountStep {
     }
 
     @Before
-    @Given("^I fill the request$")
+    @Given("^I fill the request with the minimun data required$")
     public void iFillTheRequest() {
         restClientApi.getInstance().requestAuthenticate();
 
     }
 
-
-//    @When("^I send the post$")
-//    public void iSendTheRequestt() throws JSONException {
-//        JSONObject jsonObject = new JSONObject();
-//        jsonObject.put("Name", "john");
-//        idAccount = accountApi.getInstance().createAccount(jsonObject);
-//    }
+    @When("^I create an Account with the name \"([^\"]*)\"$")
+    public void iSendThePostWithTheName(String name) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Name", name);
+        idAccount = accountApi.getInstance().createAccount(jsonObject);
+        System.out.println(name);
+    }
 
     @After
     @Given("^I fill the delete request$")
@@ -74,18 +74,12 @@ public class AccountStep {
     }
 
     @After
-    @When("^I delete the account$")
+    @When("^I delete the account that previously was created$")
     public void iSendTheDelete() {
         String endpoint = "https://na112.salesforce.com/services/data/v39.0/sobjects/Account/"+idAccount;
          accountApi.getInstance()
                 .deleteAccount(endpoint);
     }
 
-    @When("^I send the post with the name \"([^\"]*)\"$")
-    public void iSendThePostWithTheName(String name) throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Name", name);
-        idAccount = accountApi.getInstance().createAccount(jsonObject);
-        System.out.println(name);
-    }
+
 }

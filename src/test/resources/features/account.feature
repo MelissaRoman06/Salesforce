@@ -8,9 +8,9 @@ Feature: Acceptance Accounts tests
     When I send the request
 
   Scenario: Create an Account
-    Given I fill the request
-    When I send the post with the name "System32"
+    Given I fill the request with the minimun data required
+    When I create an Account with the name "System22"
 
   Scenario: Delete an Account
     Given I fill the delete request
-    When I delete the account
+    When I delete the account that previously was created
