@@ -154,7 +154,7 @@ public class RestClientApi {
      * @param valuesForTheBody the
      * @return a response
      */
-    public Response post(final String endpoint, final Map<String, String> valuesForTheBody) throws JSONException {
+    public Response post(final String endpoint, JSONObject valuesForTheBody) throws JSONException {
         String authenticator = "Bearer 00D3i000000rfF0!ARUAQD6GRMf8qbz9Ckv_GoiD1LArXxZ3TriU9g4xuEokaIcQ2cBaebfOyopphZX3oVY5frxhTH3sAJc0nOmy0n_QT_dAb3nN";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Name","account444");

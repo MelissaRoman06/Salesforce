@@ -17,6 +17,7 @@ import com.foundation.salesforce.core.RestClient.RestClientApi;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,8 +56,8 @@ public class AccountStep {
 
     @When("^I send the requestt$")
     public void iSendTheRequestt() throws JSONException {
-        final Map<String,String> map = new HashMap<>();
-        map.put("Name","Tessstest");
+        JSONObject map = new JSONObject();
+        map.put("Name","Accnnt");
         accountApi.getInstance().createAccount(map);
     }
 }
