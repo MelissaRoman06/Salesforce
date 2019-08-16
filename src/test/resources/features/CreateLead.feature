@@ -1,4 +1,5 @@
 Feature: Create lead
+  @LeadCreation
   Scenario: Create a lead sending correct json
     Given a user sets json object with required fields
       | Company	 	| KingPin      |

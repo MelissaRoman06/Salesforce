@@ -11,6 +11,7 @@
  */
 package steps;
 
+import com.foundation.salesforce.entities.Lead;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -38,8 +39,10 @@ public class LeadsSteps {
     private RequestSpecification request;
     private String ENDPOINT_LEAD = "https://na112.salesforce.com/services/data/v39.0/sobjects/Lead";
     private String TOKEN_TYPE = "Bearer";
-    private String ACCESS_TOKEN = "00D3i000000rqLx!AQwAQGFNqZ8DPvrzXwTL8jnHnFZZIiLVI1axYI_NUWFvghBnNZ01iz8SEraHNz9bU.cWlOfwUmFvJMnAkIMDnAhcwGNZgeVP";
+    private String ACCESS_TOKEN = "00D3i000000rqLx!AQwAQFGKeagwsRNKfkCZgw4gl8BfUFK4OW98ImKuRG6QM83mcssgtlmaxux9vWCaiaVXzvgppnuiibQVplI_j.MfahRym_nk";
     private JSONObject creationData;
+    private Lead lead;
+    static String createdLeadId;
 
     public void buildRequestSpecification() {
         request = new RequestSpecBuilder()
@@ -95,6 +98,11 @@ public class LeadsSteps {
         buildRequestSpecification();
         request.contentType("application/json").body(creationData.toString());
         response = given().spec(request).post();
+        lead = new Lead();
         response.prettyPrint();
+        Map<String, String> creationResponse = response.jsonPath().getMap("$");
+        lead.setId(creationResponse.get("id"));
+        createdLeadId = creationResponse.get("id");
+        System.out.println(createdLeadId);
     }
 }
